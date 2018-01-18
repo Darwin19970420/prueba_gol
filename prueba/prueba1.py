@@ -1,6 +1,7 @@
 from tkinter import *
 tk = Tk()
 pos_inic = 800
+gol = 12
 canvas = Canvas(tk, width=900, height=800)
 
 imagen = PhotoImage(file="A1.gif")
@@ -17,6 +18,8 @@ def movimimiento(event):
                 canvas.move(3, -5, 0)
                 pos_inic = pos_inic - 5
                 print(pos_inic)
+                if pos_inic < 475 or  pos_inic <585:
+                        print("gol")
         elif event.keysym == 'Right':
                 canvas.move(3, 5, 0)
                 pos_inic = pos_inic + 5
