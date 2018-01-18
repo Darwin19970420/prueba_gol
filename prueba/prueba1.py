@@ -2,8 +2,8 @@ from tkinter import *
 tk = Tk()
 pos_inic = 800
 gol = 12
-canvas = Canvas(tk, width=900, height=800)
 
+canvas = Canvas(tk, width=900, height=500)
 imagen = PhotoImage(file="A1.gif")
 canvas.create_image(650,100, anchor=NW, image=imagen)
 image1 = PhotoImage(file="ARCOIZQUIERDO.gif")
@@ -18,12 +18,19 @@ def movimimiento(event):
                 canvas.move(3, -5, 0)
                 pos_inic = pos_inic - 5
                 print(pos_inic)
-                if pos_inic < 475 or  pos_inic <585:
-                        print("gol")
+                if pos_inic == 475 or  pos_inic == 585:
+                        ventana_msg = Tk()
+                        ventana_msg.title("Aviso")
+                        ventana_msg.geometry("100x100+350+250")
+                        msg = Message(ventana_msg, text="Gol", relief=RIDGE, bd=5)
+                        msg.pack(expand=YES, fill=BOTH)
+                else:
+                        print()
         elif event.keysym == 'Right':
                 canvas.move(3, 5, 0)
                 pos_inic = pos_inic + 5
                 print(pos_inic)
+
 canvas.bind_all('<KeyPress-Left>', movimimiento)
 canvas.bind_all('<KeyPress-Right>', movimimiento)
 canvas.pack()
